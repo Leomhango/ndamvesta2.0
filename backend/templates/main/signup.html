@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <title>Ndamvetsa | Sign Up</title>
+</head>
+<body class="bg-gray-100 flex flex-col justify-center items-center w-full">
+    <nav class="flex justify-center items-center bg-gray-50 shadow-md w-full px-8 py-4">
+        <h1 class="text-blue-400 text-3xl hover:text-blue-500"><a href="{% url 'main:index' %}">Ndamvetsa</a></h1>
+    </nav>
+
+    <main class="flex flex-col justify-center items-center w-10/12 ">
+        <section class="flex flex-col justify-center items-center w-full shadow-xl mt-10 bg-white px-8 rounded-lg">
+            <h1 class="pt-10 text-2xl">Sign Up</h1>
+            <form  class="flex flex-col justify-center items-center py-10 space-y-6 w-11/12" action="" method="post">
+                {% csrf_token %}
+
+
+                {{ form.username }}
+
+                {{ form.email }}
+
+                {{ form.password1 }}
+
+                {{ form.password2 }}
+
+                <p class="w-full">Already a member?  <a href="{% url 'main:login' %}" class="font-bold hover:text-blue-400">Log in</a></p>
+                <button class="bg-blue-400 text-white py-4 rounded cursor-pointer hover:bg-transparent hover:border hover:border-blue-400 hover:text-black w-full" type="submit" name="signup">Signup</button>
+            </form>
+        </section> 
+    </main>
+
+    <script>
+        var form_fields = document.getElementsByTagName('input')
+		form_fields[1].placeholder='Your Username';
+		form_fields[2].placeholder='Your Email';
+		form_fields[3].placeholder='Enter your password';
+		form_fields[4].placeholder='Verify your Password';
+
+        for (var field in form_fields){	
+			form_fields[field].className += 'w-full px-6 py-4 rounded border-2 border-blue-400 outline-none'
+		}
+    </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{% extends 'content.html' %}    
+
+{% block content %}
+    <!-- dictionary -->
+    <main class="w-10/12">
+        <section>
+            {% for word in word %}
+            <div class="border-b border-gray-400 py-6">
+                <h1 class="text-xl font-bold">{{ word.word }}</h1>
+                <div class="px-6">
+                    <span class="italic font-light py-2">{{ word.pos }}</span>
+                    <p>{{ word.description }}</p>
+                    <p class="">"{{ word.inSentence }}"</p>
+                </div>
+            </div>
+            {% endfor %}
+        </section>
+    </main>
+{% endblock %}

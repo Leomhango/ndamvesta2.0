@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <title>Ndamvetsa | Log In</title>
+</head>
+<body class="bg-gray-100 flex flex-col justify-center items-center w-full">
+    <!-- Nav bar -->
+    <nav class="flex justify-center items-center bg-gray-50 shadow-md w-full px-8 py-4">
+        <h1 class="text-blue-400 text-3xl hover:text-blue-500"><a href="{% url 'main:index' %}">Ndamvetsa</a></h1>
+    </nav>
+    <main class="flex flex-col justify-center items-center w-10/12 ">
+        <section class="flex flex-col justify-center items-center w-full shadow-xl mt-10 bg-white px-4 rounded-lg">
+            <h1 class="pt-10 text-2xl">Log In</h1>
+
+            {% for message in messages %}
+            <p class="text-green-600 py-4 bg-green-100 w-11/12 rounded shadow text-center mt-4">{{message}}</p>
+            {% endfor %}
+            
+            <form  class="flex flex-col justify-center items-center py-10 space-y-6 w-11/12" action="" method="post">
+                {% csrf_token %}
+                <input class="w-full px-6 py-4 rounded border-2 border-blue-400 outline-none" type="text" placeholder="username" name="username">
+                <input class="w-full px-6 py-4 rounded border-2 border-blue-400 outline-none" type="password" name="password" id="" placeholder="Enter your password">
+                <p >Not a member?  <a href="{% url 'main:signup' %}" class="font-bold hover:text-blue-400">sign up</a></p>
+                <input class="bg-blue-400 text-white py-4 rounded cursor-pointer hover:bg-transparent hover:border hover:border-blue-400 hover:text-black w-full" type="submit" value="Login">
+            </form>
+        </section> 
+    </main>
+</body>
+</html>

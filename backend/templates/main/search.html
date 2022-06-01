@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %} | Search results {% endblock %} 
+
+{% block content %}
+    <!-- Body ody -->
+    <main class="w-10/12">
+        {% if searched %}
+        <section>
+            {% for word in words %}
+            <div class="border-b border-gray-400 py-6">
+                <h1 class="text-xl font-bold">{{ word.word }}</h1>
+                <div class="px-6">
+                    <span class="italic font-light py-2">{{ word.pos }}</span>
+                    <p>{{ word.description }}</p>
+                    <p class="">"{{ word.inSentence }}"</p>
+                </div>
+            </div>
+            {% endfor %}
+        </section>
+        {% else %}
+            <div class="flex justify-center items-center w-full">
+                <p class="mt-10 text-2xl">You forgot to search for a word</p>
+            </div>
+        {%endif%}
+    </main>
+{% endblock %}
