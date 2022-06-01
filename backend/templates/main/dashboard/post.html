@@ -1,0 +1,54 @@
+{% extends 'content.html' %}
+
+
+{% block content %}    
+    <!-- Form -->
+    <main class="flex flex-col items-center justify-center w-10/12">
+        <section class="flex flex-col justify-center items-center w-full shadow-xl mt-10 bg-white px-8 pt-10 rounded-lg">
+            <h1 class="text-2xl">Add Word</h1>
+
+            {% for message in messages %}
+            <p class="text-green-600 py-4 bg-green-100 w-11/12 rounded shadow text-center mt-4">{{message}}</p>
+            {% endfor %}
+
+            <!-- Form -->
+            <form action="" class="flex flex-col justify-center items-center py-10 space-y-6 w-11/12" method="post">
+                {% csrf_token %}
+
+                {{ form.word }}
+
+                {{ form.pos }}
+
+                {{ form.description }}
+
+                {{ form.inSentence }}
+
+                <button class="bg-blue-400 text-white py-4 rounded cursor-pointer hover:bg-transparent hover:border hover:border-blue-400 hover:text-black w-full" type="submit">Post</button>
+            </form>
+            <!-- end of form -->
+
+        </section>
+        
+    </main>
+
+    <script>
+        var form_fields = document.getElementsByTagName('input')
+        let text_fields = document.getElementsByTagName('textarea')
+
+        form_fields[1].placeholder='Enter Word';
+        form_fields[2].placeholder='Part of speech';
+
+        text_fields[0].placeholder='Enter Description (In English)';
+        text_fields[1].placeholder='Use word in Sentence';
+        
+
+        for (var field in form_fields){	
+			form_fields[field].className += 'w-full px-6 py-4 rounded border-2 border-blue-400 outline-none'
+		}
+
+        for (var field in text_fields){	
+			text_fields[field].className += 'w-full px-6 py-4 rounded border-2 border-blue-400 outline-none'
+		}
+    </script>
+
+{% endblock%}

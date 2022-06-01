@@ -14,21 +14,14 @@
         <nav class="flex justify-between items-center bg-gray-50 shadow-md w-full px-8 py-4">
             <div class="flex space-x-4 items-center">
                 <h1 class="text-blue-400 text-3xl hover:text-blue-500"><a href="{% url 'main:home' %}">Ndamvetsa</a></h1>
-                <p><a href="" class="text-xl">dashboard</a></p>
+                <p class="text-2xl capitalize"><a href="{% url 'main:dashboard' %}">dashboard</a></p>
             </div>
             <div class="flex space-x-4 justify-center items-center">
-                <span>Hello, {{request.user}}</span>
-                <h2 class="underline text-xl "><a href="{% url 'main:logout' %}">Logout</a></h2>
+                <span class="text-xl capitalize"n>Hello, {{request.user}}</span>
+                <h2 class="underline text-xl"><a href="{% url 'main:logout' %}">Logout</a></h2>
             </div> 
         </nav>
     
-        <!-- Search bar -->
-        <section class="my-10 w-10/12">
-            <form action="{% url 'main:search' %}" method="post">
-                {% csrf_token %}
-                <input class="w-full px-6 py-4 rounded bg-blue-100" type="search" name="searched" placeholder="search">
-            </form>
-        </section>
     {% block content %}
     {% endblock %}
 </body>
